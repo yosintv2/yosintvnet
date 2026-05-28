@@ -1,8 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=7981191925382455"
-     crossorigin="anonymous"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="robots" content="index" />
@@ -20,7 +19,7 @@
   <style>
     /* TRUE FULL-WIDTH LEAGUE BAR - Tight spacing */
     .match-league-bar {
-        margin-top: 4px; 
+        margin-top: 4px;
         padding: 6px 16px;
         background: linear-gradient(135deg, rgba(29,78,216,0.08), rgba(37,99,235,0.12));
         border-radius: 8px;
@@ -118,11 +117,7 @@
   </header>
 
   <div class="container mx-auto max-w-4xl px-4 py-4">
-    <div class="adspos">
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+    <div class="adspos" id="ad-top-banner"></div>
   </div>
 
   <main class="container mx-auto max-w-4xl px-4 py-8">
@@ -156,13 +151,10 @@
         <p>● Predicted lineups are available for the match a few days in advance while the actual lineup will be available about an hour ahead of the match.</p>
         <div id="lineup-image-container" class="my-4"></div>
 
-        <div class="adspos my-6">
-          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5525538810839147" data-ad-slot="4345862479" data-ad-format="auto" data-full-width-responsive="true"></ins>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
+        <div class="adspos my-6" id="ad-middle-banner"></div>
 
         <div id="live-tracker"></div>
-        <p>● If the first link stops working, freezes, or won’t open, try the second or third link to keep watching without trouble.</p>
+        <p>● If the first link stops working, freezes, or won't open, try the second or third link to keep watching without trouble.</p>
         <div id="live-container" class="space-y-4 my-8"></div>
       </div>
     </section>
@@ -186,29 +178,69 @@
     </div>
   </footer>
 
-  <div id='fixedban' class='fixed bottom-0 left-1/2 -translate-x-1/2 z-[999]'>
-    <div class='relative w-[300px] h-[250px] bg-white rounded-lg shadow-xl border border-gray-200'>
-      <button id='close-fixedban' class='absolute left-1/2 -translate-x-1/2 top-3 text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200 cursor-pointer z-[1000]'>Close</button>
-      <div class='w-[300px] h-[250px] overflow-hidden pt-8'>
-        <ins class='adsbygoogle inline-block w-[300px] h-[250px]' data-ad-client='ca-pub-5525538810839147' data-ad-slot='5912194004'></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
-    </div>
-  </div>
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./google.js"></script>
+
   <script type='text/javascript'>
+    // Initialize Google Ads Manager with your accounts
+    const googleAdsManager = new GoogleAdsManager({
+      accounts: [
+        { clientId: 'ca-pub-5525538810839147' },
+        // Add more accounts here:
+        // { clientId: 'ca-pub-xxxxxxxxxxxxxxxx' },
+        // { clientId: 'ca-pub-yyyyyyyyyyyyyyyy' }
+      ],
+      defaultAccount: 0
+    });
+
+    // Add ads when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Top banner ad
+      googleAdsManager.addAd('ad-top-banner', {
+        slotId: '4345862479',
+        format: 'horizontal',
+        responsive: true
+      });
+
+      // Middle banner ad
+      googleAdsManager.addAd('ad-middle-banner', {
+        slotId: '4345862479',
+        format: 'auto',
+        responsive: true
+      });
+
+      // Fixed bottom ad
+      googleAdsManager.addFixedAd({
+        slotId: '5912194004',
+        position: 'bottom',
+        width: 300,
+        height: 250,
+        closeable: true
+      });
+    });
+
     $(document).ready(function() {
-      $('#close-fixedban').click(function() { $('#fixedban').hide(90); });
+      // Close button handling (if needed for legacy code)
+      $(document).on('click', '#close-fixedban', function() {
+        $('#fixedban').hide(90);
+      });
     });
   </script>
+
+  <div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
+    <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
+    <script type="text/javascript">sc_online_i(1719927,"ffffff","ffffff");</script>
+    <noscript><a href="https://www.supercounters.com/" style="visibility:hidden;">free online counter</a></noscript>
+    <script id="_wauf8n">var _wau = _wau || []; _wau.push(["dynamic", "3h7l6orqla", "f8n", "c4302bffffff", "small"]);</script>
+    <script async src="//waust.at/d.js"></script>
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         requestAnimationFrame(async () => {
-          const normalize = (s = '') => s.toString().toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
+          const normalize = (s = '') => s.toString().toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
           const escapeHtml = (s = '') => s.toString().replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
           const toArray = (v) => Array.isArray(v) ? v : [];
           const isSet = (v) => v !== null && v !== undefined && v !== '';
@@ -563,7 +595,7 @@
           let streamData = null;
           for (const streamSlug of streamCandidates) {
             try {
-              const streamRes = await fetch(`https://www.yosintv.net/${encodeURIComponent(streamSlug)}.json`, { cache: 'no-store' });
+              const streamRes = await fetch(`https://cdn.singhs.com.np/${encodeURIComponent(streamSlug)}.json`, { cache: 'no-store' });
               if (!streamRes.ok) continue;
               const json = await streamRes.json();
               if (json && Array.isArray(json.events) && json.events.length) {
@@ -848,6 +880,7 @@
     <script id="_wauf8n">var _wau = _wau || []; _wau.push(["dynamic", "3h7l6orqla", "f8n", "c4302bffffff", "small"]);</script>
     <script async src="//waust.at/d.js"></script>
   </div>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"5243eba8b920487aaf6c8ac211a9ad54","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"5243eba8b920487aaf6c8ac211a9ad54","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
