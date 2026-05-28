@@ -1,830 +1,1095 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Primary Meta Tags -->
-    <title>YoSinTV - Cricket | Football | Playing XI | Match Preview</title>
-    <meta name="description" content="Watch live football matches, check upcoming fixtures, team lineups, match previews & playing XI. YoSinTV provides real-time updates for all major football leagues and tournaments.">
-    <meta name="keywords" content="football matches, live football, football schedule, football fixtures, playing XI, match preview, football streaming, live score, football news">
-    <meta name="author" content="YoSinTV">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="1 days">
-    
-    <!-- Open Graph Meta Tags (Social Media) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.yosintv.link/">
-    <meta property="og:title" content="Live Football Matches, Schedule & Playing XI | YoSinTV">
-    <meta property="og:description" content="Watch live football matches with real-time updates, fixtures, team lineups, and match previews. Stay updated on all major football leagues and tournaments.">
-    <meta property="og:image" content="https://web.cricfoot.net/favico.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="YoSinTV">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Live Football Matches, Schedule & Playing XI | YoSinTV">
-    <meta name="twitter:description" content="Watch live football matches with real-time updates, fixtures, team lineups, and match previews. Stay updated on all major football leagues.">
-    <meta name="twitter:image" content="https://web.cricfoot.net/favico.png">
-    <meta name="twitter:creator" content="@YoSinTV">
-    <meta name="twitter:site" content="@YoSinTV">
-    
-    <!-- Additional SEO Meta Tags -->
-    <meta name="theme-color" content="#1d4ed8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="YoSinTV">
-    <meta name="msapplication-TileColor" content="#1d4ed8">
-    <meta name="msapplication-config" content="/browserconfig.xml">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.yosintv.link/">
-    
-    <!-- Alternate URLs (for language versions if applicable) -->
-    <link rel="alternate" hreflang="en-US" href="https://www.yosintv.link/">
-    <link rel="alternate" hreflang="en" href="https://www.yosintv.link/">
-    <link rel="alternate" hreflang="x-default" href="https://www.yosintv.link/">
-    
-    <!-- Favicon & Web App Icons -->
-    <link href="https://web.cricfoot.net/favico.png" rel="icon" type="image/x-icon">
-    <link href="https://web.cricfoot.net/favico.png" rel="apple-touch-icon" type="image/png">
-    <link href="https://web.cricfoot.net/favico.png" rel="apple-touch-icon-precomposed" type="image/png">
-    <link href="https://web.cricfoot.net/favico.png" rel="shortcut icon" type="image/png">
-    
-    <!-- Manifest for PWA -->
-    <link rel="manifest" href="/manifest.json">
-    
-    <!-- DNS Prefetch & Preconnect -->
-    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
-    <link rel="dns-prefetch" href="https://www.yosin-tv.net/">
-    <link rel="preconnect" href="https://www.yosin-tv.net/">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YoSinTV - Cricket | Football | Playing XI | Sports News</title>
+  <meta name="description" content="YoSinTV is sports website that covers all the Cricket Matches, World Cup, International/Domestic Matches, Football Matches, etc."/>
+  <meta name="keywords" content="live cricket, live football, match schedule, playing XI, match preview, T20 World Cup 2026"/>
+  <meta name="author" content="YoSinTV"/>
+  <meta name="robots" content="index, follow"/>
+  <meta name="theme-color" content="#0b1226"/>
 
-    
-    <!-- Tailwind CSS CDN -->
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7981191925382455"
-     crossorigin="anonymous"></script>    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* --- Same beautiful custom CSS as before (light FotMob style) --- */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f3f4f6;
-            color: #1f2937;
-        }
-        .dark body {
-            background-color: #111827;
-            color: #f3f4f6;
-        }
-        .match-schedule-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 1rem 3rem;
-            box-sizing: border-box;
-        }
-        .league-title {
-            font-size: 1rem;
-            font-weight: 700;
-            margin: 20px auto 15px;
-            background: #1d4ed8;
-            color: white;
-            border-radius: 8px;
-            text-align: center;
-            padding: 12px;
-            width: calc(100% - 1rem);
-            max-width: 960px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .match-card {
-            display: block;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border: 1px solid #e5e7eb;
-            padding: 14px;
-            margin: 16px auto;
-            background: #ffffff;
-            width: calc(100% - 1rem);
-            max-width: 960px;
-            transition: all 0.25s;
-        }
-        .dark .match-card {
-            background: #374151;
-            border-color: #4b5563;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-        .match-card:hover {
-            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-            border-color: #93c5fd;
-        }
-        .dark .match-card:hover {
-            border-color: #60a5fa;
-        }
-        .match-card-content {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .match-row-teams {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            gap: 8px;
-        }
-        .match-team {
-            flex-grow: 1;
-            flex-basis: 0;
-            min-width: 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-shrink: 1;
-        }
-        .match-team.home {
-            justify-content: flex-end;
-        }
-        .match-team.away {
-            justify-content: flex-start;
-        }
-        .match-team img {
-            width: 48px;
-            height: 48px;
-            border-radius: 0;
-            border: none;
-            flex-shrink: 0;
-        }
-        .match-team-name {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: #1f2937;
-            flex-grow: 1;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .dark .match-team-name {
-            color: #f3f4f6;
-        }
-        .match-team.home .match-team-name {
-            order: -1;
-            text-align: right;
-        }
-        .match-team.away .match-team-name {
-            order: 1;
-            text-align: left;
-        }
-        .match-center {
-            flex-shrink: 0;
-            min-width: 90px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-        }
-        .match-local-time {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #4b5563;
-            margin-bottom: 0;
-            letter-spacing: 0.00em;
-        }
-        .dark .match-local-time {
-            color: #9ca3af;
-        }
-        .match-status {
-            font-size: 0.75rem !important;
-            font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 9999px;
-            display: inline-block;
-            min-width: 60px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            letter-spacing: 0.05em;
-            line-height: 1;
-        }
-        .match-status-countdown { background: #10b981; color: white; }
-        .match-status-live { 
-            background: #ef4444; 
-            color: white; 
-            animation: pulse 1.2s infinite; 
-        }
-        .match-status-over { background: #6b7280; color: #ffffff; }
-        @keyframes pulse { 0%,100% {opacity:1} 50% {opacity:0.7} }
-        .match-league-bar {
-            margin-top: 4px;
-            padding: 6px 16px;
-            background: linear-gradient(135deg, rgba(29,78,216,0.08), rgba(37,99,235,0.12));
-            border-radius: 8px;
-            width: 100%;
-            text-align: center;
-            box-sizing: border-box;
-        }
-        .match-league-bar p {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin: 0;
-            opacity: 0.8;
-            color: #1d4ed8;
-            letter-spacing: 0.6px;
-        }
-        .dark .match-league-bar {
-            background: linear-gradient(135deg, rgba(30,64,175,0.2), rgba(59,130,246,0.25));
-        }
-        .dark .match-league-bar p {
-            color: #60a5fa;
-            opacity: 0.9;
-        }
-        @media (max-width: 640px) {
-            .match-team-name { font-size: 0.875rem; white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.2; }
-            .match-team img { width: 36px; height: 36px; }
-            .match-center { min-width: 80px; }
-            .match-card { padding: 10px; }
-            .match-team { gap: 6px; }
-            .match-row-teams { gap: 6px; }
-        }
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            z-index: 100;
-        }
-        .dark header { background: #1f2937; }
-        .header-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            height: 70px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .dmca-section, .footer {
-            max-width: 1000px;
-            margin: 2rem auto 0;
-            padding: 2rem 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            background: #ffffff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            color: inherit;
-        }
-        .dark .dmca-section, .dark .footer {
-            background: #1f2937;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-        .dark .footer a { color: #93c5fd; }
-        .toggle {
-            position: relative;
-            display: inline-block;
-            width: 46px;
-            height: 24px;
-        }
-        .toggle input { opacity: 0; width:0; height:0; }
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: #ccc;
-            border-radius: 30px;
-            transition: .4s;
-        }
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 20px;
-            width: 20px;
-            left: 2px;
-            bottom: 2px;
-            background: white;
-            border-radius: 50%;
-            transition: .4s;
-        }
-        input:checked + .slider { background: #3b82f6; }
-        input:checked + .slider:before { transform: translateX(22px); }
-        .tgx-popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.78);
-            z-index: 2147483647;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(8px);
-        }
-        .tgx-popup-box {
-            background: linear-gradient(135deg, #0088cc, #006ba6);
-            color: white;
-            padding: 40px 30px;
-            border-radius: 24px;
-            text-align: center;
-            max-width: 420px;
-            width: 92%;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
-            animation: tgxZoomIn 0.6s cubic-bezier(0.175,0.885,0.32,1.275);
-            position: relative;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        .tgx-icon { margin-bottom: 12px; }
-        .tgx-title { font-size: 29px; margin: 12px 0 16px; font-weight: 800; }
-        .tgx-text { font-size: 17px; margin-bottom: 32px; opacity: 0.95; line-height: 1.6; }
-        .tgx-join-btn {
-            display: inline-block;
-            background: #ffffff;
-            color: #0088cc;
-            font-size: 19px;
-            font-weight: 700;
-            padding: 16px 44px;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-        .tgx-join-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-        .tgx-close-btn {
-            position: absolute;
-            top: 14px; right: 18px;
-            background: rgba(255,255,255,0.25);
-            color: white;
-            border: none;
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            font-size: 26px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .tgx-close-btn:hover { background: rgba(255,255,255,0.4); }
-        @keyframes tgxZoomIn {
-            from { opacity: 0; transform: scale(0.6); }
-            to   { opacity: 1; transform: scale(1); }
-        }
-        .tgx-popup-overlay.tgx-active { display: flex; }
-    </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="YoSinTV - Live Cricket &amp; Football | Match Schedule | Playing XI"/>
+  <meta property="og:description" content="YoSinTV is sports website that covers all the Cricket Matches, World Cup, International/Domestic Matches, Football Matches, etc."/>
+  <meta property="og:image" content="https://web.cricfoot.net/favico.png"/>
+  <meta property="og:site_name" content="YoSinTV"/>
+
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="YoSinTV - Live Cricket &amp; Football"/>
+  <meta name="twitter:image" content="https://web.cricfoot.net/favico.png"/>
+  <meta name="twitter:site" content="@YoSinTV"/>
+
+  <link rel="icon" href="https://web.cricfoot.net/favico.png" type="image/png"/>
+  <link rel="apple-touch-icon" href="https://web.cricfoot.net/favico.png"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bg: #eff4ff;
+      --bg-2: #e7eefc;
+      --surface: #ffffff;
+      --surface-soft: #f8fbff;
+      --ink: #101935;
+      --muted: #526080;
+      --line: #d6e1f5;
+      --brand: #165dff;
+      --brand-2: #0a3fc7;
+      --accent: #00b894;
+      --warn: #ff6b35;
+      --rad: 18px;
+      --rad-sm: 12px;
+      --shadow-sm: 0 8px 24px rgba(11, 29, 84, 0.08);
+      --shadow-lg: 0 18px 40px rgba(9, 25, 66, 0.16);
+      --fh: 'Barlow Condensed', sans-serif;
+      --fb: 'Manrope', sans-serif;
+    }
+
+    body.dk {
+      --bg: #0b1226;
+      --bg-2: #111b34;
+      --surface: #14203f;
+      --surface-soft: #192749;
+      --ink: #eaf0ff;
+      --muted: #9fb0d3;
+      --line: #27375f;
+      --brand: #4f86ff;
+      --brand-2: #80a7ff;
+      --accent: #2bd6b3;
+      --warn: #ff8d5f;
+      --shadow-sm: 0 10px 24px rgba(2, 8, 25, 0.45);
+      --shadow-lg: 0 20px 48px rgba(1, 6, 20, 0.6);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--fb);
+      color: var(--ink);
+      background:
+        radial-gradient(1100px 480px at 80% -20%, rgba(22, 93, 255, 0.22), transparent 70%),
+        radial-gradient(900px 400px at -10% 10%, rgba(0, 184, 148, 0.14), transparent 62%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 35%, var(--bg) 100%);
+      line-height: 1.55;
+      padding-top: 76px;
+    }
+    img { max-width: 100%; height: auto; }
+
+    #yst-hdr {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--surface) 86%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+    }
+    .hdr-in {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+    .logo img { height: 62px; display: block; }
+    .hdr-r { display: flex; align-items: center; gap: 0.7rem; }
+    .si {
+      border: 1px solid var(--line);
+      background: var(--surface-soft);
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 13px;
+      width: 176px;
+      outline: none;
+      transition: width .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .si:focus {
+      width: 230px;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand) 22%, transparent);
+    }
+    .tgl { position: relative; display: inline-block; width: 52px; height: 28px; cursor: pointer; }
+    .tgl input { display: none; }
+    .sldr {
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--muted) 32%, #fff);
+      transition: .3s;
+    }
+    .sldr::before {
+      content: '';
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      left: 3px;
+      bottom: 3px;
+      border-radius: 50%;
+      background: #fff;
+      transition: .3s;
+      box-shadow: 0 3px 8px rgba(0,0,0,.22);
+    }
+    .tgl input:checked + .sldr {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    }
+    .tgl input:checked + .sldr::before { transform: translateX(24px); }
+
+    .yst-nav {
+      position: sticky;
+      top: 76px;
+      z-index: 999;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--surface) 90%, transparent);
+      backdrop-filter: blur(8px);
+    }
+    .nav-in {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      gap: 0.2rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-in::-webkit-scrollbar { display: none; }
+    .nl {
+      text-decoration: none;
+      color: var(--muted);
+      font-family: var(--fh);
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-size: .82rem;
+      padding: 12px 12px;
+      border-bottom: 2px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+    .nl:hover, .nl.active {
+      color: var(--ink);
+      border-bottom-color: var(--brand);
+    }
+
+    .hero {
+      max-width: 1140px;
+      margin: 16px auto 14px;
+      padding: 0 1rem;
+    }
+    .hero-box {
+      position: relative;
+      overflow: hidden;
+      border-radius: calc(var(--rad) + 2px);
+      background: linear-gradient(125deg, #0f3cb9 0%, #165dff 45%, #0f8f83 100%);
+      color: #fff;
+      padding: 20px 18px;
+      box-shadow: var(--shadow-lg);
+      isolation: isolate;
+    }
+    .hero-box::before {
+      content: '';
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 70%);
+      top: -220px;
+      right: -120px;
+      z-index: -1;
+    }
+    .hero h1 {
+      font-family: var(--fh);
+      font-size: 1.72rem;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+    .hero p {
+      margin-top: 8px;
+      max-width: 760px;
+      font-size: 0.95rem;
+      opacity: .96;
+    }
+    .hero-badges {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hb {
+      font-size: 12px;
+      font-weight: 800;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.25);
+    }
+
+    .ad-wrap {
+      max-width: 1140px;
+      margin: 0 auto 14px;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .yst-wrap {
+      max-width: 1140px;
+      margin: 0 auto 56px;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 22px;
+      align-items: start;
+    }
+    @media (max-width: 980px) {
+      .yst-wrap { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+      border: 1px solid var(--line);
+      border-radius: var(--rad);
+      box-shadow: var(--shadow-sm);
+      padding: 16px;
+    }
+
+    .sh {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .sh-t {
+      font-family: var(--fh);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .sh-l {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--brand) 0%, transparent 100%);
+    }
+    .sh-b {
+      background: color-mix(in srgb, var(--accent) 82%, #fff);
+      color: #fff;
+      font-family: var(--fh);
+      font-size: .7rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 3px 10px;
+    }
+
+    .evg {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .ev {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      border-radius: var(--rad-sm);
+      border: 1px solid var(--line);
+      padding: 10px;
+      background: linear-gradient(160deg, var(--surface) 0%, var(--surface-soft) 100%);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .ev:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--brand) 58%, var(--line));
+      box-shadow: var(--shadow-sm);
+    }
+    .ev img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+    .ev-t {
+      font-size: .9rem;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: .01em;
+    }
+    .ev-loading {
+      color: var(--muted);
+      font-size: .88rem;
+      padding: 6px 2px;
+      grid-column: 1 / -1;
+      text-align: center;
+    }
+
+    .wgt {
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+      border: 1px solid var(--line);
+      border-radius: var(--rad);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .wgt-h {
+      font-family: var(--fh);
+      font-size: .96rem;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 12px 14px;
+      background: linear-gradient(140deg, var(--brand-2), var(--brand));
+    }
+    .wgt-b { padding: 12px 14px; }
+
+    .ft-ul { list-style: none; }
+    .ft-ul li + li { margin-top: 8px; }
+    .ft-ul a {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: .88rem;
+      opacity: .9;
+      transition: color .2s ease, transform .2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ft-ul a:hover {
+      color: var(--brand);
+      transform: translateX(2px);
+    }
+
+    .dmca {
+      margin-top: 8px;
+      padding: 18px;
+      border-radius: var(--rad);
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--surface) 95%, transparent);
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+    }
+    .dmca-h {
+      font-family: var(--fh);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .dmca p {
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.7;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .yst-ft {
+      margin-top: 30px;
+      padding: 36px 1rem 18px;
+      background: linear-gradient(180deg, #0a1226 0%, #0a1020 100%);
+      color: rgba(255,255,255,.78);
+    }
+    .ft-in { max-width: 1140px; margin: 0 auto; }
+    .ft-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .ft-ht {
+      font-family: var(--fh);
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .yst-ft .ft-ul a { color: rgba(255,255,255,.72); font-weight: 600; }
+    .yst-ft .ft-ul a:hover { color: #9fd1ff; }
+    .socrow { display: flex; gap: 9px; margin-top: 12px; }
+    .socbtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      text-decoration: none;
+      color: #fff;
+      background: rgba(255,255,255,.14);
+      transition: transform .2s ease, background .2s ease;
+    }
+    .socbtn:hover { transform: translateY(-2px); background: rgba(124, 173, 255, 0.5); }
+    .ft-bot {
+      border-top: 1px solid rgba(255,255,255,.12);
+      padding-top: 16px;
+      text-align: center;
+      font-size: .8rem;
+      color: rgba(255,255,255,.5);
+    }
+    .ft-bot a { color: rgba(255,255,255,.72); text-decoration: none; }
+    .ft-bot a:hover { color: #b6d6ff; }
+
+    #btt {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border: none;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      background: linear-gradient(140deg, var(--brand), var(--brand-2));
+      z-index: 500;
+      font-size: 1rem;
+    }
+    #btt.on { display: inline-flex; }
+
+    @media (max-width: 760px) {
+      body { padding-top: 72px; }
+      .hdr-in { height: 72px; }
+      .logo img { height: 56px; }
+      .si { width: 136px; padding: 9px 12px; }
+      .si:focus { width: 170px; }
+      .yst-nav { top: 72px; }
+      .hero h1 { font-size: 1.42rem; }
+      .hero p { font-size: .9rem; }
+      .panel { padding: 12px; }
+      .evg { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
-
-<!-- Header -->
-<header>
-    <div class="header-container">
-        <a href="https://www.yosin-tv.net/">
-            <img src="https://web.cricfoot.net/logo.png" alt="YoSinTV" style="height:65px;">
-        </a>
-        <label class="toggle">
-            <input type="checkbox" id="darkModeToggle">
-            <span class="slider"></span>
-        </label>
+<body>
+<header id="yst-hdr">
+  <div class="hdr-in">
+    <a class="logo" href="/"><img alt="YoSinTV" src="https://web.cricfoot.net/logo.png"></a>
+    <div class="hdr-r">
+      <input class="si" id="yst-s" placeholder="Quick search in recent posts" type="text"/>
+      <label class="tgl" title="Dark Mode"><input id="yst-dm" type="checkbox"/><span class="sldr"></span></label>
     </div>
+  </div>
 </header>
 
-<main style="padding-top: 78px;">
+<nav class="yst-nav">
+  <div class="nav-in">
+    <a class="nl active" href="#" data-filter="all">Home</a>
+    <a class="nl" href="#" data-filter="Cricket">Cricket</a>
+    <a class="nl" href="#" data-filter="Football">Football</a>
+    <a class="nl" href="#" data-filter="Playing XI">Playing XI</a>
+    <a class="nl" href="#" data-filter="Match Preview">Preview</a>
+    <a class="nl" href="#" data-filter="T20 World Cup">T20 WC 2026</a>
+    <a class="nl" href="https://www.cricfoot.net/?ads=yosintv.net" rel="noopener" target="_blank">Highlights</a>
+    <a class="nl" href="https://t.me/yosintvlive" rel="noopener" target="_blank">Telegram</a>
+  </div>
+</nav>
 
-    <center class="my-3">
-    <!--Ads Here-->
-    </center>
-
- <div class="match-schedule-container">
-
-<div class="yosintv-sidebar-container">
-    <a class="yosintv-tg-btn" href="https://t.me/yosintvlive" target="_blank" rel="noopener">
-        <svg viewbox="0 0 21 18">
-            <path fill="#ffffff" d="M0.554,7.092 L19.117,0.078 C19.737,-0.156 20.429,0.156 20.663,0.776 C20.745,0.994 20.763,1.23 20.713,1.457 L17.513,16.059 C17.351,16.799 16.62,17.268 15.88,17.105 C15.696,17.065 15.523,16.987 15.37,16.877 L8.997,12.271 C8.614,11.994 8.527,11.458 8.805,11.074 C8.835,11.033 8.869,10.994 8.905,10.958 L15.458,4.661 C15.594,4.53 15.598,4.313 15.467,4.176 C15.354,4.059 15.174,4.037 15.036,4.125 L6.104,9.795 C5.575,10.131 4.922,10.207 4.329,10.002 L0.577,8.704 C0.13,8.55 -0.107,8.061 0.047,7.614 C0.131,7.374 0.316,7.182 0.554,7.092 Z"></path>
-        </svg>
-        Join YoSinTV Telegram
-    </a>
-
-    <a href="https://www.cricfoot.net/?ads=yosintv.net" class="blinking-dot-container">
-        <span class="dot"></span> Watch Latest Highlights
-    </a>
-
-    <div class="yosintv-wrapper">
-        <div class="yosintv-button">All Cricket Events</div>
-        <div class="yosintv-grid" id="cricket-events"></div>
-    </div>
-
-    <div style="margin: 15px 0; overflow: hidden;">
-    <!--Ads Here-->
-    </div>
-
-    <div class="yosintv-wrapper">
-        <div class="yosintv-button">All Football Events</div>
-        <div class="yosintv-grid" id="football-events"></div>
-    </div>
-
+<div class="ad-wrap">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5525538810839147"
+       data-ad-slot="4345862479"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
 
-<script>
-    function displayEvents(events, containerId) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        events.forEach(event => {
-            const card = document.createElement("a");
-            card.href = event.link;
-            card.className = "yosintv-card";
-            card.innerHTML = `
-                <img src="${event.image.trim()}" alt="${event.name}">
-                <div class="yosintv-title">${event.name}</div>
-            `;
-            container.appendChild(card);
-        });
-    }
-
-    // ✅ Changed from .json to .js
-    fetch('https://yosintv2.github.io/yosintv.link/events-cricket.js')
-        .then(res => res.json())
-        .then(data => displayEvents(data.matches, 'cricket-events'))
-        .catch(e => console.error('Cricket Load Error'));
-
-    // ✅ Changed from .json to .js
-    fetch('https://yosintv2.github.io/yosintv.link/events-football.js')
-        .then(res => res.json())
-        .then(data => displayEvents(data.matches, 'football-events'))
-        .catch(e => console.error('Football Load Error'));
-</script>
-
-
-
-
-<style>
-    .yosintv-sidebar-container {
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-        overflow-x: hidden;
-    }
-
-    .yosintv-tg-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        font-weight: 500;
-        border-radius: 4px;
-        padding: 10px;
-        background: #389ce9;
-        text-decoration: none;
-        color: #fff !important;
-        margin-bottom: 10px;
-    }
-
-    .yosintv-tg-btn svg {
-        width: 24px;
-        height: 24px;
-        margin-right: 8px;
-    }
-
-    .blinking-dot-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        font-size: 14px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #333;
-        padding: 10px;
-        border: 2px solid #333;
-        border-radius: 10px;
-        margin-bottom: 15px;
-        box-sizing: border-box;
-    }
-
-    .dot {
-        width: 10px;
-        height: 10px;
-        background-color: red;
-        border-radius: 50%;
-        animation: blink 1s infinite;
-    }
-
-    @keyframes blink { 0% {opacity: 1} 50% {opacity: 0} 100% {opacity: 1} }
-
-    .yosintv-button {
-        font-size: 18px;
-        font-weight: 700;
-        padding: 10px;
-        margin: 10px 0;
-        background: linear-gradient(90deg, #f41111, #dc2626);
-        color: #fff;
-        text-align: center;
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Grid Fix for Sidebar */
-    .yosintv-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 12px;
-        margin-bottom: 20px;
-        padding: 5px;
-    }
-
-    .yosintv-card {
-        background: #fff;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-        padding: 10px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        color: #111;
-        border-radius: 8px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .yosintv-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-        background-color: #f9f9f9;
-    }
-
-    .yosintv-card img {
-        width: 45px;
-        height: 45px;
-        object-fit: contain;
-    }
-
-    .yosintv-title {
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 1.3;
-    }
-</style>
-
-
-       <center class="my-5">
-    <!--Ads Here-->
-       </center>
-       
-    </div>
-
-    <!-- DMCA & Footer -->
-    <section class="dmca-section">
-        <h2 class="text-2xl font-bold mb-3">YoSinTV - DMCA Notice</h2>
-        <p class="text-sm leading-relaxed">YoSinTV Doesn't host any media content on it own Site. Our site visitors might use external or third parties services to show content, (Example: Embedding media from sites like Bet365, Dailymotion , Streamable etc ..) We Notify all copyright owners, to discover that the links and media shared by visitors and contained within this site are hosted somewhere else on the web or embedded from other various sites like above.</p>
+<div class="yst-wrap">
+  <main>
+    <section class="panel">
+      <div class="sh">
+        <h2 class="sh-t">All Cricket Events</h2>
+        <div class="sh-l"></div>
+        <span class="sh-b">Live</span>
+      </div>
+      <div class="evg" id="yst-cr-ev"><p class="ev-loading">Loading cricket events...</p></div>
     </section>
 
-    <footer class="footer text-sm">
-        <a href="#about" class="text-blue-600 hover:underline mx-2">About</a> •
-        <a href="#contact" class="text-blue-600 hover:underline mx-2">Contact</a> •
-        <a href="#privacy" class="text-blue-600 hover:underline mx-2">Privacy Policy</a>
-    </footer>
-</main>
-
-<script>
-    let allMatches = [];
-    let updateIntervalId;
-
-    // Dark Mode
-    const toggle = document.getElementById('darkModeToggle');
-    const updateTheme = (isDark) => {
-        if (isDark) {
-            document.body.classList.add('dark', 'bg-gray-900', 'text-gray-100');
-            document.body.classList.remove('bg-gray-100', 'text-gray-900');
-        } else {
-            document.body.classList.remove('dark', 'bg-gray-900', 'text-gray-100');
-            document.body.classList.add('bg-gray-100', 'text-gray-900');
-        }
-    };
-    if (localStorage.getItem('darkMode') === 'true') {
-        updateTheme(true);
-        toggle.checked = true;
-    } else {
-        updateTheme(false);
-    }
-    toggle.addEventListener('change', () => {
-        const isChecked = toggle.checked;
-        updateTheme(isChecked);
-        localStorage.setItem('darkMode', isChecked);
-    });
-
-    function formatMatchTime(isoString) {
-        try {
-            const date = new Date(isoString);
-            if (isNaN(date)) return 'Time TBD';
-            return new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit', hour12: true }).format(date);
-        } catch (e) {
-            return 'Time TBD';
-        }
-    }
-
-    function updateCountdownDisplay() {
-        const now = Date.now();
-        document.querySelectorAll('.match-status').forEach(el => {
-            const start = new Date(el.dataset.time).getTime();
-            const duration = (parseInt(el.dataset.duration) || 2) * 3600000;
-            const end = start + duration;
-
-            if (now >= end) {
-                el.textContent = 'END';
-                el.className = 'match-status match-status-over';
-            } else if (now >= start) {
-                el.textContent = 'LIVE';
-                el.className = 'match-status match-status-live';
-            } else {
-                const diff = start - now;
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                let text = '';
-                if (diff < 60000) text = 'Soon';
-                else if (d > 0) text = `${d}d ${h}h`;
-                else if (h > 0) text = `${h}h ${m}m`;
-                else text = `${m}m`;
-                el.textContent = text;
-                el.className = 'match-status match-status-countdown';
-            }
-        });
-    }
-
-    function createCard(m) {
-        const detailsUrl = m.details_url || '#';
-        const league = m.competition || m.league || '';
-        const team1Name = m.team1 || 'Home Team TBD';
-        const team2Name = m.team2 || 'Away Team TBD';
-        const placeholder = "https://placehold.co/48x48/ccc/333?text=L";
-        const logoError = `this.onerror=null;this.src='${placeholder}';`;
-
-        const leagueBar = league ? `<div class="match-league-bar"><p>${league}</p></div>` : '';
-
-        const a = document.createElement('a');
-        a.href = detailsUrl;
-        a.className = 'match-card';
-        a.target = '_blank';
-        a.dataset.time = m.start || m.match_time;
-        a.dataset.duration = m.duration || 2;
-        a.innerHTML = `
-            <div class="match-card-content">
-                <div class="match-row-teams">
-                    <div class="match-team home">
-                        <p class="match-team-name">${team1Name}</p>
-                        <img src="${m.team1_logo || placeholder}" alt="${team1Name}" onerror="${logoError}">
-                    </div>
-                    <div class="match-center">
-                        <p class="match-local-time">${formatMatchTime(m.start || m.match_time)}</p>
-                        <p class="match-status" data-time="${m.start || m.match_time}" data-duration="${m.duration || 2}">Loading...</p>
-                    </div>
-                    <div class="match-team away">
-                        <img src="${m.team2_logo || placeholder}" alt="${team2Name}" onerror="${logoError}">
-                        <p class="match-team-name">${team2Name}</p>
-                    </div>
-                </div>
-                ${leagueBar}
-            </div>
-        `;
-        return a;
-    }
-
-    function renderMatches() {
-        const list = document.getElementById('cricket-list');
-        list.innerHTML = '';
-        allMatches.forEach((match, i) => {
-            list.appendChild(createCard(match));
-        });
-        updateCountdownDisplay();
-    }
-
-    function sortAndRender(matchesArray) {
-        const now = Date.now();
-
-        allMatches = matchesArray.map(m => {
-            const start = new Date(m.start || m.match_time).getTime();
-            const duration = (parseInt(m.duration) || 2) * 3600000;
-            const end = start + duration;
-
-            let priority = 3;
-            let sortValue = start;
-
-            if (now >= start && now < end) {
-                priority = 1;
-                sortValue = -start;
-            } else if (now < start) {
-                priority = 2;
-                sortValue = start;
-            } else {
-                priority = 3;
-                sortValue = end;
-            }
-
-            return { ...m, priority, sortValue };
-        });
-
-        allMatches.sort((a, b) => {
-            if (a.priority !== b.priority) return a.priority - b.priority;
-            return a.sortValue - b.sortValue;
-        });
-
-        renderMatches();
-    }
-
-    async function loadMatches() {
-        if (updateIntervalId) clearInterval(updateIntervalId);
-
-        const apiUrl = 'https://yosintv-api.pages.dev/api/football2.json';
-        const list = document.getElementById('cricket-list');
-
-        try {
-            const res = await fetch(apiUrl);
-            if (!res.ok) throw new Error(`API error: ${res.status}`);
-
-            const data = await res.json();
-            let matchesArray = [];
-            if (Array.isArray(data) && data.length > 0 && Array.isArray(data[0]?.matches)) {
-                matchesArray = data[0].matches;
-            } else if (data?.matches) {
-                matchesArray = data.matches;
-            } else if (Array.isArray(data)) {
-                matchesArray = data;
-            }
-
-            if (matchesArray.length === 0) {
-                list.innerHTML = '<p class="text-center text-xl font-semibold text-gray-500 py-10">No matches scheduled</p>';
-                return;
-            }
-
-            sortAndRender(matchesArray);
-
-            updateIntervalId = setInterval(updateCountdownDisplay, 1000);
-        } catch (e) {
-            console.error(e);
-            list.innerHTML = '<p class="text-center text-xl font-semibold text-red-600 py-10">Error loading matches • Try again later</p>';
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', loadMatches);
-</script>
-
-<!-- jQuery for fixed ad close -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Telegram Popup -->
-<div class="tgx-popup-overlay" id="tgxPopup">
-    <div class="tgx-popup-box">
-        <button class="tgx-close-btn" onclick="closeTgxPopup()">×</button>
-        <div class="tgx-icon">
-            <svg viewBox="0 0 240 240" width="80" height="80" fill="white">
-                <circle cx="120" cy="120" r="120"/>
-                <path d="M81.2 174.3c-5.4 0-2.7-2-7.3-6.4l-18.4-60.5 127.3-49.1c8 3.5 12.2 1.9 14-5.8l22.7-106.9c3.1-13.8-4.7-20.1-12.7-16.6L57.9 105.8 36.2 99c-9.7-3-9.9-9.7 1.2-14.6l131.2-50.7c11.2-4.6 21.2 2.8 17.1 14.6l-22.4 106.9c-1.6 7.6-6 9.4-13.8 5.8L97.6 152l-9.9 9.9c-3.3 3.3-6 6.4-6.5 8.4z" fill="#0088cc"/>
-            </svg>
-        </div>
-        <h2 class="tgx-title">Join YoSinTV Telegram</h2>
-        <p class="tgx-text">Match updates, news & highlights !</p>
-        <a href="https://t.me/yosintvlive" target="_blank" class="tgx-join-btn">Click to Join Channel</a>
+    <div class="ad-wrap" style="padding: 0; margin: 12px 0 14px;">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-5525538810839147"
+           data-ad-slot="4345862479"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
+
+    <section class="panel">
+      <div class="sh">
+        <h2 class="sh-t">All Football Events</h2>
+        <div class="sh-l"></div>
+        <span class="sh-b">Live</span>
+      </div>
+      <div class="evg" id="yst-ft-ev"><p class="ev-loading">Loading football events...</p></div>
+    </section>
+
+    <div class="dmca">
+      <div class="dmca-h">YoSinTV - DMCA Notice</div>
+      <p>YoSinTV does not host media content on its own servers. Any linked streams or media are hosted externally by third-party providers.</p>
+    </div>
+  </main>
+
+  <aside>
+    <div class="wgt">
+      <div class="wgt-h">Cricket</div>
+      <div class="wgt-b">
+        <ul class="ft-ul">
+          <li><a href="#">All Cricket</a></li>
+          <li><a href="#">T20 World Cup 2026</a></li>
+          <li><a href="#">IPL</a></li>
+          <li><a href="#">Playing XI</a></li>
+          <li><a href="https://yosintv.getemoji.online/cricket.html" rel="noopener" target="_blank">Live Cricket</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="wgt">
+      <div class="wgt-h">Football</div>
+      <div class="wgt-b">
+        <ul class="ft-ul">
+          <li><a href="#">All Football</a></li>
+          <li><a href="#">Match Previews</a></li>
+          <li><a href="#">Premier League</a></li>
+          <li><a href="#">Champions League</a></li>
+          <li><a href="#">La Liga</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="wgt" style="margin-bottom:0;">
+      <div class="wgt-h">Pages</div>
+      <div class="wgt-b">
+        <ul class="ft-ul">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">DMCA</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
 </div>
+
+<div class="ad-wrap" style="margin-bottom: 18px;">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5525538810839147"
+       data-ad-slot="4345862479"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<footer class="yst-ft">
+  <div class="ft-in">
+    <div class="ft-grid">
+      <div>
+        <img alt="YoSinTV" src="https://web.cricfoot.net/logo.png" style="height:42px;margin-bottom:11px;filter:brightness(0) invert(1);" onerror="this.style.display='none'"/>
+        <p style="font-size:.84rem;line-height:1.65;max-width:240px;">YoSinTV is sports website that covers all the Cricket Matches, World Cup, International/Domestic Matches, Football Matches, etc.</p>
+        <div class="socrow">
+          <a class="socbtn" href="https://t.me/yosintvlive" rel="noopener" target="_blank" title="Telegram">T</a>
+          <a class="socbtn" href="https://www.cricfoot.net/?ads=yosintv.net" rel="noopener" target="_blank" title="Highlights">H</a>
+        </div>
+      </div>
+      <div>
+        <div class="ft-ht">Cricket</div>
+        <ul class="ft-ul">
+          <li><a href="#">All Cricket</a></li>
+          <li><a href="#">T20 World Cup 2026</a></li>
+          <li><a href="#">IPL</a></li>
+          <li><a href="#">Playing XI</a></li>
+          <li><a href="https://yosintv.getemoji.online/cricket.html" rel="noopener" target="_blank">Live Cricket</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ht">Football</div>
+        <ul class="ft-ul">
+          <li><a href="#">All Football</a></li>
+          <li><a href="#">Match Previews</a></li>
+          <li><a href="#">Premier League</a></li>
+          <li><a href="#">Champions League</a></li>
+          <li><a href="#">La Liga</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft-ht">Pages</div>
+        <ul class="ft-ul">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">DMCA</a></li>
+          <li><a href="#">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p>&copy; <span id="yr">2025</span> <a href="/">YoSinTV</a>. All rights reserved. &nbsp;&middot;&nbsp;
+        <a href="#">Privacy</a> &nbsp;&middot;&nbsp;
+        <a href="#">Disclaimer</a> &nbsp;&middot;&nbsp;
+        <a href="#">DMCA</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">▲</button>
+
 <script>
-    const tgxPopup = document.getElementById('tgxPopup');
-    const STORAGE_KEY = 'tgxPopupLastShown';
-    const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+'use strict';
+var DATA_JSON_URL = 'data.json';
 
-    function shouldShowPopup() {
-        const last = localStorage.getItem(STORAGE_KEY);
-        if (!last) return true;
-        return Date.now() - parseInt(last) >= ONE_DAY_MS;
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+var dm = document.getElementById('yst-dm');
+function applyDk(on) { document.body.classList.toggle('dk', on); }
+var sdm = localStorage.getItem('ystDm');
+if (sdm === 'true') { applyDk(true); dm.checked = true; }
+dm.addEventListener('change', function () { applyDk(this.checked); localStorage.setItem('ystDm', this.checked); });
+
+var btt = document.getElementById('btt');
+window.addEventListener('scroll', function () { btt.classList.toggle('on', window.scrollY > 300); });
+
+function fetchJSON(url, cb, errCb) {
+  var proxies = [url, 'https://corsproxy.io/?' + encodeURIComponent(url), 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url)];
+  var i = 0;
+  function next() {
+    if (i >= proxies.length) { if (errCb) errCb(); return; }
+    fetch(proxies[i++], { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(cb)
+      .catch(next);
+  }
+  next();
+}
+
+function loadEv(url, cid) {
+  var cont = document.getElementById(cid);
+  if (!cont) return;
+  fetchJSON(url, function (data) {
+    cont.innerHTML = '';
+    var items = data.matches || [];
+    if (!items.length) {
+      cont.innerHTML = '<p class="ev-loading">No events found.</p>';
+      return;
     }
-
-    function markShown() {
-        localStorage.setItem(STORAGE_KEY, Date.now().toString());
-    }
-
-    function closeTgxPopup() {
-        tgxPopup.classList.remove('tgx-active');
-        markShown();
-    }
-
-    window.addEventListener('load', () => {
-        if (shouldShowPopup()) {
-            setTimeout(() => {
-                tgxPopup.classList.add('tgx-active');
-                markShown();
-            }, 1200);
-        }
+    items.forEach(function (ev) {
+      var a = document.createElement('a');
+      a.href = ev.link || '#';
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.className = 'ev';
+      a.innerHTML = '<img src="' + (ev.image || '').trim() + '" alt="' + (ev.name || '') + '" loading="lazy"/><span class="ev-t">' + (ev.name || '') + '</span>';
+      cont.appendChild(a);
     });
+  }, function () {
+    cont.innerHTML = '<p class="ev-loading">Could not load events.</p>';
+  });
+}
 
-    tgxPopup.addEventListener('click', e => {
-        if (e.target === tgxPopup) closeTgxPopup();
-    });
+loadEv('https://yosintv2.github.io/yosintv.link/events-cricket.js', 'yst-cr-ev');
+loadEv('https://yosintv2.github.io/yosintv.link/events-football.js', 'yst-ft-ev');
 </script>
-
-<!-- Supercounters (optional) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5525538810839147" crossorigin="anonymous"></script>
 <div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
     <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
     <script type="text/javascript">sc_online_i(1714446,"ffffff","ffffff");</script>
-    <noscript><a href="https://www.supercounters.com/" style="visibility:hidden;">free online counter</a></noscript>
 </div>
 
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v67327c56f0bb4ef8b305cae61679db8f1769101564043" integrity="sha512-rdcWY47ByXd76cbCFzznIcEaCN71jqkWBBqlwhF1SY7KubdLKZiEGeP7AyieKZlGP9hbY/MhGrwXzJC/HulNyg==" data-cf-beacon='{"version":"2024.11.0","token":"5243eba8b920487aaf6c8ac211a9ad54","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<!-- FIFA World Cup 2026 Popup -->
+<div id="fifa-popup" class="fifa-popup-overlay">
+  <div class="fifa-popup-box">
+
+    <!-- Close Button -->
+    <button class="fifa-close-btn" onclick="fifaClosePopup()">×</button>
+
+    <!-- FIFA Logo -->
+    <img
+      src="https://images.fotmob.com/image_resources/logo/leaguelogo/dark/77.png"
+      alt="FIFA World Cup 2026"
+      class="fifa-logo"
+    />
+
+    <!-- Title -->
+    <h2>FIFA World Cup 2026</h2>
+
+    <!-- YoSinTV LIVE -->
+    <div class="fifa-yosintv-live">
+      <span class="fifa-live-pulse"></span>
+      Live in YoSinTV
+    </div>
+
+    <!-- Date -->
+    <p class="fifa-date">June 12, 2026</p>
+
+    <!-- Countdown -->
+    <div class="fifa-countdown">
+
+      <div>
+        <span id="fifa-days">00</span>
+        <small>Days</small>
+      </div>
+
+      <div>
+        <span id="fifa-hours">00</span>
+        <small>Hours</small>
+      </div>
+
+      <div>
+        <span id="fifa-minutes">00</span>
+        <small>Minutes</small>
+      </div>
+
+      <div>
+        <span id="fifa-seconds">00</span>
+        <small>Seconds</small>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<style>
+
+/* Overlay */
+.fifa-popup-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.78);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999999;
+  padding:16px;
+  backdrop-filter:blur(5px);
+}
+
+/* Popup Box */
+.fifa-popup-box{
+  position:relative;
+  width:100%;
+  max-width:420px;
+  padding:32px 24px;
+  border-radius:26px;
+  overflow:hidden;
+  text-align:center;
+  color:#fff;
+
+  background:
+    radial-gradient(circle at top, rgba(0,174,255,.22), transparent 40%),
+    linear-gradient(135deg,#06111f,#0f2747);
+
+  border:1px solid rgba(255,255,255,.1);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.5),
+    0 0 30px rgba(0,174,255,.12);
+
+  animation:fifaPopupShow .35s ease;
+}
+
+@keyframes fifaPopupShow{
+  from{
+    opacity:0;
+    transform:scale(.85);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* Close Button */
+.fifa-close-btn{
+  position:absolute;
+  top:12px;
+  right:14px;
+  width:36px;
+  height:36px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,.14);
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.fifa-close-btn:hover{
+  background:#ff2d55;
+  transform:rotate(90deg);
+}
+
+/* Logo */
+.fifa-logo{
+  width:95px;
+  height:95px;
+  object-fit:contain;
+  margin-bottom:16px;
+  filter:drop-shadow(0 0 15px rgba(255,255,255,.2));
+}
+
+/* Title */
+.fifa-popup-box h2{
+  margin:0;
+  line-height:1.3;
+  font-size:28px;
+  font-weight:800;
+  color:#ffffff !important;
+  text-shadow:0 0 14px rgba(255,255,255,.18);
+}
+
+/* Live YoSinTV */
+.fifa-yosintv-live{
+  margin-top:16px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.12);
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:700;
+  color:#fff;
+  backdrop-filter:blur(8px);
+  box-shadow:0 0 20px rgba(0,174,255,.15);
+}
+
+/* Live Dot */
+.fifa-live-pulse{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#ff2d55;
+  position:relative;
+  animation:fifaLiveBlink 1s infinite;
+}
+
+.fifa-live-pulse::after{
+  content:"";
+  position:absolute;
+  inset:-4px;
+  border-radius:50%;
+  border:2px solid rgba(255,45,85,.45);
+  animation:fifaRipple 1.5s infinite;
+}
+
+@keyframes fifaLiveBlink{
+  0%,100%{
+    opacity:1;
+  }
+  50%{
+    opacity:.4;
+  }
+}
+
+@keyframes fifaRipple{
+  0%{
+    transform:scale(.7);
+    opacity:1;
+  }
+  100%{
+    transform:scale(1.8);
+    opacity:0;
+  }
+}
+
+/* Date */
+.fifa-date{
+  margin-top:18px;
+  margin-bottom:22px;
+  color:#ffd369;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+
+/* Countdown */
+.fifa-countdown{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.fifa-countdown div{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:14px 8px;
+  backdrop-filter:blur(6px);
+}
+
+.fifa-countdown span{
+  display:block;
+  font-size:26px;
+  font-weight:800;
+  color:#ffffff;
+}
+
+.fifa-countdown small{
+  display:block;
+  margin-top:4px;
+  font-size:11px;
+  color:#dbe7ff;
+}
+
+/* Mobile */
+@media(max-width:480px){
+
+  .fifa-popup-box{
+    max-width:95%;
+    padding:28px 16px;
+  }
+
+  .fifa-popup-box h2{
+    font-size:22px;
+  }
+
+  .fifa-logo{
+    width:80px;
+    height:80px;
+  }
+
+  .fifa-yosintv-live{
+    font-size:12px;
+    padding:8px 14px;
+  }
+
+  .fifa-countdown{
+    gap:7px;
+  }
+
+  .fifa-countdown span{
+    font-size:20px;
+  }
+
+  .fifa-countdown small{
+    font-size:10px;
+  }
+
+}
+
+</style>
+
+<script>
+
+/* CLOSE POPUP */
+function fifaClosePopup(){
+
+  document.getElementById("fifa-popup").style.display = "none";
+
+  /* SAVE CLOSE TIME */
+  localStorage.setItem(
+    "fifaPopupLastClosed",
+    Date.now()
+  );
+}
+
+/* CHECK 2 HOUR RULE */
+(function(){
+
+  const lastClosed =
+    localStorage.getItem("fifaPopupLastClosed");
+
+  const TWO_HOURS =
+    1 * 60 * 60 * 1000;
+
+  if(lastClosed){
+
+    const diff =
+      Date.now() - parseInt(lastClosed);
+
+    /* HIDE IF NOT PASSED 2 HOURS */
+    if(diff < TWO_HOURS){
+
+      document.getElementById("fifa-popup").style.display = "none";
+
+    }
+
+  }
+
+})();
+
+/* COUNTDOWN TARGET */
+const fifaTargetDate =
+  new Date("June 12, 2026 00:00:00").getTime();
+
+/* COUNTDOWN FUNCTION */
+function fifaUpdateCountdown(){
+
+  const now = new Date().getTime();
+
+  const distance =
+    fifaTargetDate - now;
+
+  if(distance <= 0){
+
+    document.getElementById("fifa-days").innerText = "00";
+    document.getElementById("fifa-hours").innerText = "00";
+    document.getElementById("fifa-minutes").innerText = "00";
+    document.getElementById("fifa-seconds").innerText = "00";
+
+    return;
+  }
+
+  const days =
+    Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  const hours =
+    Math.floor((distance / (1000 * 60 * 60)) % 24);
+
+  const minutes =
+    Math.floor((distance / (1000 * 60)) % 60);
+
+  const seconds =
+    Math.floor((distance / 1000) % 60);
+
+  document.getElementById("fifa-days").innerText = days;
+  document.getElementById("fifa-hours").innerText = hours;
+  document.getElementById("fifa-minutes").innerText = minutes;
+  document.getElementById("fifa-seconds").innerText = seconds;
+}
+
+/* START */
+fifaUpdateCountdown();
+
+setInterval(
+  fifaUpdateCountdown,
+  1000
+);
+
+</script>
+
 </body>
 </html>
