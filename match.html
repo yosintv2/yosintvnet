@@ -436,38 +436,24 @@
             { url: 'https://yosintvapi.pages.dev/api/match-football.json', sport: 'football' }
           ];
 
-const urlParams = new URLSearchParams(window.location.search);
-// Accepts ?singhs=ufc or fallback ?yosintv=ufc
-const slug = (urlParams.get('singhs') || urlParams.get('yosintv') || '').trim();
-if (!slug) return;
+          const urlParams = new URLSearchParams(window.location.search);
+          const slug = (urlParams.get('yosintv') || '').trim();
+          if (!slug) return;
 
-const searchKey = normalize(slug);
-
-// Create the dynamic API target based on your new domain and the slug
-const mainApis = [
-  { url: `https://cdn.singhs.com.np/${slug}.json`, sport: slug }
-];
-
-const apiResponses = await Promise.allSettled(
-  mainApis.map(async ({ url, sport }) => {
-    try {
-      const res = await fetch(url, { cache: 'no-store' });
-      if (!res.ok) throw new Error(`Failed ${url}`);
-      
-      const json = await res.json();
-      const rawMatches = Array.isArray(json.matches) ? json.matches : (Array.isArray(json) ? json : []);
-      
-      const matches = toArray(rawMatches).map(match => ({
-        ...match,
-        __sport: getSportType(match) === 'sports' ? sport : getSportType(match)
-      }));
-      return matches;
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  })
-);
+          const searchKey = normalize(slug);
+          const apiResponses = await Promise.allSettled(
+            mainApis.map(async ({ url, sport }) => {
+              const res = await fetch(url, { cache: 'no-store' });
+              if (!res.ok) throw new Error(`Failed ${url}`);
+              const json = await res.json();
+              const rawMatches = Array.isArray(json.matches) ? json.matches : (Array.isArray(json) ? json : []);
+              const matches = toArray(rawMatches).map(match => ({
+                ...match,
+                __sport: getSportType(match) === 'sports' ? sport : getSportType(match)
+              }));
+              return matches;
+            })
+          );
 
           const allMatches = apiResponses
             .filter(result => result.status === 'fulfilled')
