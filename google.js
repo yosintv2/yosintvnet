@@ -178,3 +178,53 @@ class GoogleAdsManager {
 
 // Expose globally
 window.GoogleAdsManager = GoogleAdsManager;
+
+/* ─── Auto-initialization ─────────────────────────────────────────────────── */
+const googleAdsManager = new GoogleAdsManager({
+  accounts: [
+    { clientId: 'ca-pub-5525538810839147' },
+    // Add more accounts here:
+    // { clientId: 'ca-pub-xxxxxxxxxxxxxxxx' },
+    // { clientId: 'ca-pub-yyyyyyyyyyyyyyyy' }
+  ],
+  defaultAccount: 0
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Top banner ad
+  googleAdsManager.addAd('ad-top-banner', {
+    slotId: '4345862479',
+    format: 'horizontal',
+    responsive: true
+  });
+
+  // Middle banner ad
+  googleAdsManager.addAd('ad-middle-banner', {
+    slotId: '4345862479',
+    format: 'auto',
+    responsive: true
+  });
+
+  // Fixed bottom ad
+  googleAdsManager.addFixedAd({
+    slotId: '5912194004',
+    position: 'bottom',
+    width: 300,
+    height: 250,
+    closeable: true
+  });
+
+  // Legacy close button support (jQuery-compatible fallback)
+  if (window.jQuery) {
+    jQuery(document).on('click', '#close-fixedban', function () {
+      jQuery('#fixedban').hide(90);
+    });
+  } else {
+    document.addEventListener('click', function (e) {
+      if (e.target && e.target.id === 'close-fixedban') {
+        const el = document.getElementById('fixedban');
+        if (el) el.style.display = 'none';
+      }
+    });
+  }
+});
