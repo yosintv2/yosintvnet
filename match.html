@@ -181,52 +181,6 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="./google.js"></script>
 
-  <script type='text/javascript'>
-    // Initialize Google Ads Manager with your accounts
-    const googleAdsManager = new GoogleAdsManager({
-      accounts: [
-        { clientId: 'ca-pub-5525538810839147' },
-        // Add more accounts here:
-        // { clientId: 'ca-pub-xxxxxxxxxxxxxxxx' },
-        // { clientId: 'ca-pub-yyyyyyyyyyyyyyyy' }
-      ],
-      defaultAccount: 0
-    });
-
-    // Add ads when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-      // Top banner ad
-      googleAdsManager.addAd('ad-top-banner', {
-        slotId: '4345862479',
-        format: 'horizontal',
-        responsive: true
-      });
-
-      // Middle banner ad
-      googleAdsManager.addAd('ad-middle-banner', {
-        slotId: '4345862479',
-        format: 'auto',
-        responsive: true
-      });
-
-      // Fixed bottom ad
-      googleAdsManager.addFixedAd({
-        slotId: '5912194004',
-        position: 'bottom',
-        width: 300,
-        height: 250,
-        closeable: true
-      });
-    });
-
-    $(document).ready(function() {
-      // Close button handling (if needed for legacy code)
-      $(document).on('click', '#close-fixedban', function() {
-        $('#fixedban').hide(90);
-      });
-    });
-  </script>
-
   <div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
     <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
     <script type="text/javascript">sc_online_i(1719927,"ffffff","ffffff");</script>
