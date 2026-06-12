@@ -485,6 +485,53 @@
       *, *::before, *::after { animation: none !important; transition: none !important; }
     }
   </style>
+<!-- Fixed Bottom Ad -->
+<style>
+#fixedban {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+.ad-container {
+    position: relative;
+    width: 300px;
+    height: 250px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.15);
+    overflow: hidden;
+}
+
+#close-fixedban {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#close-fixedban:hover {
+    color: #1d4ed8;
+}
+
+.ad-content {
+    width: 300px;
+    height: 250px;
+    padding-top: 28px;
+    overflow: hidden;
+}
+</style>
+  
 </head>
 <body>
 <header id="yst-hdr">
@@ -666,24 +713,28 @@
 
 <!-- jQuery for fixed ad close -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-<!-- Fixed Bottom Ad -->
-  <div id='fixedban' class='fixed bottom-0 left-1/2 -translate-x-1/2 z-[999]'>
-    <div class='relative w-[300px] h-[250px] bg-white rounded-lg shadow-xl border border-gray-200'>
-      <button id='close-fixedban' class='absolute left-1/2 -translate-x-1/2 top-3 text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200 cursor-pointer z-[1000]'>Close</button>
-      <div class='w-[300px] h-[250px] overflow-hidden pt-8'>
-        <ins class='adsbygoogle inline-block w-[300px] h-[250px]' data-ad-client='ca-pub-5525538810839147' data-ad-slot='5912194004'></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
+
+<div id="fixedban">
+    <div class="ad-container">
+        <button id="close-fixedban">Close</button>
+
+        <div class="ad-content">
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:250px"
+                 data-ad-client="ca-pub-5525538810839147"
+                 data-ad-slot="5912194004"></ins>
+        </div>
     </div>
-  </div>
+</div>
+
 <script>
-    $(document).ready(function() {
-        $('#close-fixedban').click(function() {
-            $('#fixedban').hide(90);
-        });
-    });
+(adsbygoogle = window.adsbygoogle || []).push({});
+
+document.getElementById("close-fixedban").addEventListener("click", function() {
+    document.getElementById("fixedban").style.display = "none";
+});
 </script>
+  
   
 <script>
 'use strict';
