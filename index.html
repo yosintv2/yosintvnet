@@ -720,7 +720,18 @@
 
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">▲</button>
 
-<!-- jQuery for fixed ad close -->
+    <div id="adb-wrapper">
+        <div class="adb-card">
+            <div style="font-size: 50px; margin-bottom: 15px;">🚫</div>
+            <h2 style="color: #1e293b; margin-bottom: 10px;">Ad-blocker Detected</h2>
+            <p style="color: #64748b; margin-bottom: 20px;">Please disable your Ad-blocker to support our free live streaming service.</p>
+            <button onclick="window.location.reload()" class="adb-btn">I've disabled it, refresh</button>
+        </div>
+    </div>
+    <div id="toast" class="toast"></div>
+   <script src="adblock.js"></script>
+
+  <!-- jQuery for fixed ad close -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <div id="fixedban">
@@ -805,7 +816,6 @@ loadEv('https://yosintv2.github.io/yosintv.link/events-football.js', 'yst-ft-ev'
     <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
     <script type="text/javascript">sc_online_i(1714446,"ffffff","ffffff");</script>
 </div>
-
 
 </body>
 </html>
