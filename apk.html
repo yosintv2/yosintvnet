@@ -1,14 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=https://onelink.to/sfr39p">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YoSinTV App</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.popup {
+    display: none;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 25px;
+    max-width: 350px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+}
+
+.popup h2 {
+    margin-top: 0;
+}
+
+.popup button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    background: #e50914;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+</style>
+
 <script>
-window.location.replace("https://play.google.com/store/apps/details?id=net.yosintv.tv");
+window.onload = function() {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Android
+    if (/android/i.test(ua)) {
+        window.location.replace(
+            "https://play.google.com/store/apps/details?id=net.yosintv.tv"
+        );
+        return;
+    }
+
+    // iPhone / iPad / iPod
+    if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        document.getElementById("iosPopup").style.display = "block";
+        return;
+    }
+
+    // Other devices (PC, etc.)
+    window.location.replace("https://www.yosintv.net");
+};
 </script>
-<title>Redirecting...</title>
 </head>
+
 <body>
-Redirecting...
+
+<div id="iosPopup" class="popup">
+    <h2>📱 YoSinTV App</h2>
+    <p>YoSinTV App Coming Soon For iOS / iPhone.</p>
+    <button onclick="window.location.href='https://www.yosintv.net';">
+        Continue to Website
+    </button>
+</div>
+
+<p id="loading">Redirecting...</p>
+
 </body>
 </html>
