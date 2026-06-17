@@ -3,7 +3,7 @@
   const CONFIG = {
     showAds: true,        // MASTER switch: false hides ALL ads (nothing loads)
     showTopAd: true,      // responsive unit below the nav   (#ad-top)    primary acct
-    showMidAd: true,      // responsive unit between sections (#ad-mid)    primary acct
+    showMidAd: true,      // responsive unit between sections (#ad-mid)    SECOND acct
     showBottomAd: true,   // responsive unit below main grid  (#ad-bottom) SECOND acct
     showFixedAd: true     // fixed 300x250 bottom unit         (#fixedban)  primary acct
   };
@@ -15,7 +15,7 @@
 
   // ----- Second AdSense account (bottom unit only) -----
   const ALT_CLIENT = 'ca-pub-7981191925382455';
-  const ALT_SLOT_BOTTOM = '3322637685';
+  const ALT_SLOT = '3322637685'; // used by ad-mid + ad-bottom
 
   // Load the AdSense library for a given account (once per account).
   function loadAdsense(client) {
@@ -98,8 +98,8 @@
 
     let count = 0;
     if (CONFIG.showTopAd    && fillResponsive('ad-top',    ADS_CLIENT, SLOT_RESPONSIVE)) count++;
-    if (CONFIG.showMidAd    && fillResponsive('ad-mid',    ADS_CLIENT, SLOT_RESPONSIVE)) count++;
-    if (CONFIG.showBottomAd && fillResponsive('ad-bottom', ALT_CLIENT, ALT_SLOT_BOTTOM)) count++;
+    if (CONFIG.showMidAd    && fillResponsive('ad-mid',    ALT_CLIENT, ALT_SLOT)) count++;
+    if (CONFIG.showBottomAd && fillResponsive('ad-bottom', ALT_CLIENT, ALT_SLOT)) count++;
     if (CONFIG.showFixedAd  && initFixedAd()) count++;
 
     // Push exactly one request per rendered unit (works across accounts).
