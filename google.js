@@ -2,33 +2,38 @@
   // ===== AD CONFIG — flip these to control ads on this page =====
   const CONFIG = {
     showAds: true,        // MASTER switch: false hides ALL ads (nothing loads)
-    showTopAd: true,      // responsive unit below the nav        (#ad-top)
-    showMidAd: true,      // responsive unit between sections      (#ad-mid)
-    showBottomAd: true,   // responsive unit below main grid       (#ad-bottom)
-    showFixedAd: true     // fixed 300x250 bottom unit             (#fixedban)
+    showTopAd: true,      // responsive unit below the nav   (#ad-top)    primary acct
+    showMidAd: true,      // responsive unit between sections (#ad-mid)    primary acct
+    showBottomAd: true,   // responsive unit below main grid  (#ad-bottom) SECOND acct
+    showFixedAd: true     // fixed 300x250 bottom unit         (#fixedban)  primary acct
   };
 
-  // ----- Google AdSense settings -----
+  // ----- Primary AdSense account (top, mid, fixed) -----
   const ADS_CLIENT = 'ca-pub-5525538810839147';
-  const SLOT_RESPONSIVE = '4345862479'; // top / mid / bottom
-  const SLOT_FIXED = '5912194004';       // fixed 300x250
+  const SLOT_RESPONSIVE = '4345862479';
+  const SLOT_FIXED = '5912194004';
 
-  function loadAdsense() {
-    if (document.querySelector('script[data-google-adsense="main"]')) return;
+  // ----- Second AdSense account (bottom unit only) -----
+  const ALT_CLIENT = 'ca-pub-7981191925382455';
+  const ALT_SLOT_BOTTOM = '3322637685';
+
+  // Load the AdSense library for a given account (once per account).
+  function loadAdsense(client) {
+    if (document.querySelector('script[data-adsense-client="' + client + '"]')) return;
     const s = document.createElement('script');
     s.async = true;
-    s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADS_CLIENT;
+    s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + client;
     s.crossOrigin = 'anonymous';
-    s.setAttribute('data-google-adsense', 'main');
+    s.setAttribute('data-adsense-client', client);
     document.head.appendChild(s);
   }
 
-  function createResponsiveIns() {
+  function createResponsiveIns(client, slot) {
     const ins = document.createElement('ins');
     ins.className = 'adsbygoogle';
     ins.style.display = 'block';
-    ins.setAttribute('data-ad-client', ADS_CLIENT);
-    ins.setAttribute('data-ad-slot', SLOT_RESPONSIVE);
+    ins.setAttribute('data-ad-client', client);
+    ins.setAttribute('data-ad-slot', slot);
     ins.setAttribute('data-ad-format', 'auto');
     ins.setAttribute('data-full-width-responsive', 'true');
     return ins;
@@ -46,11 +51,11 @@
   }
 
   // Fill a responsive placeholder by id. Returns true if a unit was added.
-  function fillResponsive(id) {
+  function fillResponsive(id, client, slot) {
     const wrap = document.getElementById(id);
     if (!wrap) return false;
     wrap.innerHTML = '';
-    wrap.appendChild(createResponsiveIns());
+    wrap.appendChild(createResponsiveIns(client, slot));
     return true;
   }
 
@@ -82,21 +87,22 @@
 
   function initAds() {
     if (!CONFIG.showAds) {
-      // Master off: make sure the fixed unit stays hidden too.
       const ban = document.getElementById('fixedban');
       if (ban) ban.style.display = 'none';
       return;
     }
 
-    loadAdsense();
+    // Load the library for whichever accounts are actually used.
+    loadAdsense(ADS_CLIENT);
+    if (CONFIG.showBottomAd) loadAdsense(ALT_CLIENT);
 
     let count = 0;
-    if (CONFIG.showTopAd && fillResponsive('ad-top')) count++;
-    if (CONFIG.showMidAd && fillResponsive('ad-mid')) count++;
-    if (CONFIG.showBottomAd && fillResponsive('ad-bottom')) count++;
-    if (CONFIG.showFixedAd && initFixedAd()) count++;
+    if (CONFIG.showTopAd    && fillResponsive('ad-top',    ADS_CLIENT, SLOT_RESPONSIVE)) count++;
+    if (CONFIG.showMidAd    && fillResponsive('ad-mid',    ADS_CLIENT, SLOT_RESPONSIVE)) count++;
+    if (CONFIG.showBottomAd && fillResponsive('ad-bottom', ALT_CLIENT, ALT_SLOT_BOTTOM)) count++;
+    if (CONFIG.showFixedAd  && initFixedAd()) count++;
 
-    // Push exactly one request per rendered unit.
+    // Push exactly one request per rendered unit (works across accounts).
     if (count > 0) setTimeout(function () { pushAds(count); }, 400);
   }
 
