@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Football Schedule – YoSinTV</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f3f4f6;
+    color: #1f2937;
+    font-size: 14px;
+  }
+
+  #widget-wrap {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 8px 8px 0;
+  }
+
+  /* ---- Match card ---- */
+  .match-card {
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    transition: box-shadow 0.2s, border-color 0.2s;
+    color: inherit;
+  }
+  .match-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.13);
+    border-color: #93c5fd;
+  }
+
+  .match-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .team {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .team.home { justify-content: flex-end; }
+  .team.away { justify-content: flex-start; }
+
+  .team img {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
+  .team-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #1f2937;
+  }
+  .team.home .team-name { text-align: right; order: -1; }
+  .team.away .team-name { text-align: left; }
+
+  .center-col {
+    flex-shrink: 0;
+    min-width: 72px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .match-time {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #6b7280;
+  }
+
+  .badge {
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 999px;
+    display: inline-block;
+    letter-spacing: 0.04em;
+    min-width: 52px;
+    text-align: center;
+  }
+  .badge-live  { background: #ef4444; color: #fff; animation: blink 1.2s infinite; }
+  .badge-soon  { background: #10b981; color: #fff; }
+  .badge-ended { background: #9ca3af; color: #fff; }
+
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.65} }
+
+  .league-bar {
+    margin-top: 6px;
+    background: linear-gradient(135deg,rgba(29,78,216,.07),rgba(37,99,235,.12));
+    border-radius: 6px;
+    padding: 4px 10px;
+    text-align: center;
+  }
+  .league-bar span {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #1d4ed8;
+    letter-spacing: 0.5px;
+  }
+
+  /* ---- States ---- */
+  .state-msg {
+    text-align: center;
+    padding: 24px 0;
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+
+  /* ---- Attribution error box ---- */
+  .attr-error {
+    margin: 16px 0;
+    background: #fff7ed;
+    border: 1.5px solid #fb923c;
+    border-radius: 10px;
+    padding: 16px 14px;
+    text-align: center;
+  }
+  .attr-error strong {
+    display: block;
+    font-size: 0.9rem;
+    color: #c2410c;
+    margin-bottom: 8px;
+  }
+  .attr-error p {
+    font-size: 0.78rem;
+    color: #7c3a17;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .attr-error .req-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .attr-error .req-links a {
+    display: inline-block;
+    background: #1d4ed8;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+  .attr-error .how {
+    font-size: 0.7rem;
+    color: #9a3412;
+    background: #ffedd5;
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: left;
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  /* ---- Footer backlink ---- */
+  .powered-by {
+    text-align: center;
+    padding: 10px 0 12px;
+    font-size: 0.7rem;
+    color: #9ca3af;
+    line-height: 1.8;
+  }
+  .powered-by a {
+    color: #1d4ed8;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .powered-by a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div id="widget-wrap">
+  <div id="match-list"><p class="state-msg">Loading matches…</p></div>
+
+  <!-- These powered-by links are always visible and cannot be removed from the widget -->
+  <p class="powered-by">
+    ⚽ Football schedule powered by
+    <a href="https://www.yosintv.net/" target="_blank" rel="noopener">YoSinTV</a>
+  </p>
+</div>
+
+<script>
+const API         = 'https://cdn.singhs.com.np/api/match-football.json';
+const PLACEHOLDER = 'https://placehold.co/32x32/ccc/555?text=⚽';
+const REQUIRED    = ['yosintv.net', 'yosin-tv.net'];
+const AUTH_TIMEOUT = 2500; // ms to wait for parent auth signal
+
+/* ── helpers ── */
+function fmtTime(iso) {
+  try {
+    const d = new Date(iso);
+    if (isNaN(d)) return 'TBD';
+    return new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit', hour12: true }).format(d);
+  } catch { return 'TBD'; }
+}
+
+function calcStatus(startIso, durationHrs) {
+  const now   = Date.now();
+  const start = new Date(startIso).getTime();
+  const end   = start + (parseFloat(durationHrs) || 2) * 3600000;
+  if (now >= end)   return { cls: 'badge-ended', text: 'ENDED' };
+  if (now >= start) return { cls: 'badge-live',  text: 'LIVE'  };
+  const diff = start - now;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000)  / 60000);
+  const s = Math.floor((diff % 60000)    / 1000);
+  const text = d > 0 ? `${d}d ${h}h` : h > 0 ? `${h}h ${m}m` : `${m}m ${s}s`;
+  return { cls: 'badge-soon', text };
+}
+
+function makeCard(m) {
+  const a       = document.createElement('a');
+  a.className   = 'match-card';
+  a.href        = m.details_url || 'https://www.yosintv.net/football.html';
+  a.target      = '_blank';
+  a.rel         = 'noopener';
+  a.dataset.time     = m.start || m.match_time;
+  a.dataset.duration = m.duration || 2;
+
+  const t1     = m.team1 || 'Home';
+  const t2     = m.team2 || 'Away';
+  const logo1  = m.team1_logo || PLACEHOLDER;
+  const logo2  = m.team2_logo || PLACEHOLDER;
+  const league = m.displayLeague || m.competition || m.league || '';
+  const { cls, text } = calcStatus(m.start || m.match_time, m.duration);
+
+  a.innerHTML = `
+    <div class="match-row">
+      <div class="team home">
+        <span class="team-name">${t1}</span>
+        <img src="${logo1}" alt="${t1}" onerror="this.src='${PLACEHOLDER}'">
+      </div>
+      <div class="center-col">
+        <span class="match-time">${fmtTime(m.start || m.match_time)}</span>
+        <span class="badge ${cls}" data-time="${m.start||m.match_time}" data-duration="${m.duration||2}">${text}</span>
+      </div>
+      <div class="team away">
+        <img src="${logo2}" alt="${t2}" onerror="this.src='${PLACEHOLDER}'">
+        <span class="team-name">${t2}</span>
+      </div>
+    </div>
+    ${league ? `<div class="league-bar"><span>${league}</span></div>` : ''}
+  `;
+  return a;
+}
+
+function updateBadges() {
+  document.querySelectorAll('.badge[data-time]').forEach(el => {
+    const { cls, text } = calcStatus(el.dataset.time, el.dataset.duration);
+    el.className  = `badge ${cls}`;
+    el.textContent = text;
+  });
+}
+
+function processMatches(raw) {
+  const now = Date.now();
+  const out = [];
+  raw.forEach(m => {
+    const isTest     = m.repeat === '5';
+    const repeatDays = isTest ? 5 : 1;
+    const baseStart  = new Date(m.start || m.match_time).getTime();
+    const durHrs     = parseInt(m.duration) || (isTest ? 8 : 2);
+    for (let i = 0; i < repeatDays; i++) {
+      const dStart = baseStart + i * 86400000;
+      const dEnd   = dStart + durHrs * 3600000;
+      if (isTest && now > dEnd) continue;
+      const obj = { ...m };
+      obj.start         = new Date(dStart).toISOString();
+      obj.displayLeague = isTest
+        ? (m.competition || m.league || '') + ` (Day ${i+1})`
+        : (m.competition || m.league || '');
+      obj._pri  = now >= dStart && now < dEnd ? 1 : now < dStart ? 2 : 3;
+      obj._sort = dStart;
+      out.push(obj);
+      if (isTest) break;
+    }
+  });
+  return out.sort((a, b) => a._pri - b._pri || a._sort - b._sort);
+}
+
+async function loadMatches() {
+  const list = document.getElementById('match-list');
+  try {
+    const res  = await fetch(API);
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+    const raw  = data.matches || data;
+    if (!raw || !raw.length) {
+      list.innerHTML = '<p class="state-msg">No upcoming matches.</p>';
+      return;
+    }
+    const matches = processMatches(raw);
+    list.innerHTML = '';
+    matches.forEach(m => list.appendChild(makeCard(m)));
+    setInterval(updateBadges, 1000);
+  } catch {
+    list.innerHTML = '<p class="state-msg">Could not load matches. <a href="https://www.yosintv.net/football.html" target="_blank">View on YoSinTV</a></p>';
+  }
+}
+
+function showAttributionError() {
+  const list = document.getElementById('match-list');
+  list.innerHTML = `
+    <div class="attr-error">
+      <strong>⚠️ Attribution link missing</strong>
+      <p>To use this free widget, your page must include a visible link to YoSinTV. Please add the following link to your page:</p>
+      <div class="req-links">
+        <a href="https://www.yosintv.net/" target="_blank" rel="noopener">www.yosintv.net</a>
+      </div>
+      <div class="how">&lt;a href="https://www.yosintv.net/" target="_blank"&gt;YoSinTV&lt;/a&gt;</div>
+    </div>`;
+}
+
+/* ── auth gate ── */
+function start() {
+  // Not inside an iframe — direct access, load freely
+  if (window.self === window.top) {
+    loadMatches();
+    return;
+  }
+
+  // Inside an iframe — wait for parent to confirm attribution links are present
+  let resolved = false;
+
+  const onMessage = function(e) {
+    if (!e.data || e.data.yosintvAuth === undefined) return;
+    resolved = true;
+    window.removeEventListener('message', onMessage);
+    if (e.data.yosintvAuth === true) {
+      loadMatches();
+    } else {
+      showAttributionError();
+    }
+  };
+
+  window.addEventListener('message', onMessage);
+
+  // If parent script was removed / never ran, timeout and block
+  setTimeout(() => {
+    if (!resolved) {
+      resolved = true;
+      window.removeEventListener('message', onMessage);
+      showAttributionError();
+    }
+  }, AUTH_TIMEOUT);
+}
+
+document.addEventListener('DOMContentLoaded', start);
+</script>
+<!-- Supercounters (optional) -->
+<div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
+  <script id="_wau9qe">var _wau = _wau || []; _wau.push(["dynamic", "94wqr9hsga", "9qe", "c4302bffffff", "small"]);</script><script async src="//waust.at/d.js"></script>
+</div>
+</body>
+</html>

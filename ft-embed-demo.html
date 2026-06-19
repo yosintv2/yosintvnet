@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embed Football Schedule – YoSinTV</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background:#f9fafb; color:#1f2937; padding:24px 16px; max-width:680px; margin:0 auto; }
+  h1 { font-size:1.4rem; font-weight:800; color:#1d4ed8; margin-bottom:6px; }
+  p  { font-size:0.9rem; color:#6b7280; margin-bottom:20px; }
+
+  .top-row {
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:10px; margin-bottom:6px;
+  }
+  .top-row h1 { margin-bottom:0; }
+
+  .preview-box {
+    border:2px dashed #d1d5db;
+    border-radius:12px;
+    overflow:hidden;
+    margin-bottom:28px;
+    background:#fff;
+  }
+  iframe { display:block; width:100%; border:none; }
+
+  .code-section h2 { font-size:1rem; font-weight:700; margin-bottom:8px; }
+  pre {
+    background:#1e293b;
+    color:#e2e8f0;
+    border-radius:10px;
+    padding:16px;
+    font-size:0.78rem;
+    overflow-x:auto;
+    white-space:pre;
+    margin-bottom:12px;
+    line-height:1.6;
+  }
+
+  .copy-btn {
+    display:inline-block;
+    background:#1d4ed8;
+    color:#fff;
+    border:none;
+    padding:9px 22px;
+    border-radius:8px;
+    font-size:0.85rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:background 0.2s;
+  }
+  .copy-btn:hover { background:#1e40af; }
+  .copied { background:#10b981 !important; }
+
+  .callout {
+    background:#fef3c7;
+    border:1.5px solid #f59e0b;
+    border-radius:8px;
+    padding:12px 14px;
+    font-size:0.8rem;
+    color:#92400e;
+    margin-bottom:20px;
+    line-height:1.6;
+  }
+  .callout strong { display:block; margin-bottom:4px; color:#78350f; }
+
+  .note { font-size:0.75rem; color:#9ca3af; margin-top:14px; }
+  .note a { color:#1d4ed8; }
+</style>
+</head>
+<body>
+
+<div class="top-row">
+  <h1>⚽ Embed Football Schedule on Your Site</h1>
+  <button class="copy-btn" id="top-copy-btn" onclick="copyCode()">Copy Embed Code</button>
+</div>
+<p>Add a live football match schedule widget to your website for free. The widget updates automatically — no registration needed.</p>
+
+<div class="callout">
+  <strong>⚠️ Required attribution</strong>
+  The embed code below includes a mandatory link to <strong>yosintv.net</strong>.
+  Do <em>not</em> remove it — the widget will stop working if that link is missing from your page.
+</div>
+
+<div class="preview-box">
+  <iframe id="yosintv-ft-preview" src="ft-embed.html" height="480" title="Football Schedule Widget by YoSinTV"></iframe>
+</div>
+
+<div class="code-section">
+  <h2>Copy &amp; paste this code into your website</h2>
+  <pre id="embed-code">&lt;!-- ⚽ Football Schedule Widget by YoSinTV — required attribution link below, do not remove --&gt;
+&lt;p style="font-size:0.85rem;margin:0 0 6px;"&gt;
+  Live football schedule from
+  &lt;a href="https://www.yosintv.net/" target="_blank" rel="noopener"&gt;YoSinTV&lt;/a&gt;
+&lt;/p&gt;
+&lt;iframe
+  id="yosintv-ft"
+  src="https://www.yosintv.net/ft-embed.html"
+  width="100%"
+  height="480"
+  style="border:none;border-radius:10px;overflow:hidden;display:block;"
+  title="Football Schedule – YoSinTV"
+  loading="lazy"
+&gt;&lt;/iframe&gt;
+&lt;script&gt;
+(function(){
+  var iframe = document.getElementById('yosintv-ft');
+  var hasLink = !!document.querySelector('a[href*="yosintv.net"]');
+  iframe.addEventListener('load', function(){
+    iframe.contentWindow.postMessage(
+      { yosintvAuth: hasLink },
+      'https://www.yosintv.net'
+    );
+  });
+})();
+&lt;/script&gt;</pre>
+  <button class="copy-btn" id="bottom-copy-btn" onclick="copyCode()">Copy Embed Code</button>
+</div>
+
+<p class="note">
+  Widget data is sourced from <a href="https://www.yosintv.net/football.html" target="_blank">YoSinTV Football Schedule</a>.
+  Match times are shown in your visitor's local timezone automatically.
+</p>
+
+<!-- Auth signal for the preview iframe on this page -->
+<script>
+var previewIframe = document.getElementById('yosintv-ft-preview');
+previewIframe.addEventListener('load', function(){
+  previewIframe.contentWindow.postMessage({ yosintvAuth: true }, '*');
+});
+
+function copyCode() {
+  /* innerText automatically decodes &lt; → < etc. */
+  var code = document.getElementById('embed-code').innerText;
+  navigator.clipboard.writeText(code).then(function(){
+    ['top-copy-btn', 'bottom-copy-btn'].forEach(function(id){
+      var btn = document.getElementById(id);
+      btn.textContent = '✓ Copied!';
+      btn.classList.add('copied');
+    });
+    setTimeout(function(){
+      document.getElementById('top-copy-btn').textContent = 'Copy Embed Code';
+      document.getElementById('bottom-copy-btn').textContent = 'Copy Embed Code';
+      document.getElementById('top-copy-btn').classList.remove('copied');
+      document.getElementById('bottom-copy-btn').classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+
+<!-- Supercounters (optional) -->
+<div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;">
+  <script id="_wau9qe">var _wau = _wau || []; _wau.push(["dynamic", "94wqr9hsga", "9qe", "c4302bffffff", "small"]);</script><script async src="//waust.at/d.js"></script>
+</div>
+</body>
+</html>
