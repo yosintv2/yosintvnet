@@ -88,43 +88,28 @@
 
 <div class="code-section">
   <h2>Copy &amp; paste this code into your website</h2>
-  <pre id="embed-code">&lt;!-- ⚽ Football Schedule Widget by YoSinTV — required attribution link below, do not remove --&gt;
+  <pre id="embed-code">&lt;!-- ⚽ Football Schedule Widget by YoSinTV --&gt;
+&lt;p style="font-size:0.85rem;margin:0 0 6px;"&gt;
+  Live football schedule from
+  &lt;a href="https://www.yosintv.net/" target="_blank" rel="noopener"&gt;YoSinTV&lt;/a&gt;
+&lt;/p&gt;
 &lt;iframe
-  id="yosintv-ft"
   src="https://www.yosintv.net/ft-embed.html"
   width="100%"
-  height="500"
+  height="480"
   style="border:none;border-radius:10px;overflow:hidden;display:block;"
   title="Football Schedule – YoSinTV"
   loading="lazy"
-&gt;&lt;/iframe&gt;
-&lt;script&gt;
-(function(){
-  var iframe = document.getElementById('yosintv-ft');
-  var hasLink = !!document.querySelector('a[href*="yosintv.net"]');
-  iframe.addEventListener('load', function(){
-    iframe.contentWindow.postMessage(
-      { yosintvAuth: hasLink },
-      'https://www.yosintv.net'
-    );
-  });
-})();
-&lt;/script&gt;</pre>
+&gt;&lt;/iframe&gt;</pre>
   <button class="copy-btn" id="bottom-copy-btn" onclick="copyCode()">Copy Embed Code</button>
 </div>
 
 <p class="note">
-  Widget data is sourced from <a href="https://www.yosintv.net/" target="_blank">YoSinTV Football Schedule</a>.
+  Widget data is sourced from <a href="https://www.yosintv.net/football.html" target="_blank">YoSinTV Football Schedule</a>.
   Match times are shown in your visitor's local timezone automatically.
 </p>
 
-<!-- Auth signal for the preview iframe on this page -->
 <script>
-var previewIframe = document.getElementById('yosintv-ft-preview');
-previewIframe.addEventListener('load', function(){
-  previewIframe.contentWindow.postMessage({ yosintvAuth: true }, '*');
-});
-
 function copyCode() {
   /* innerText automatically decodes &lt; → < etc. */
   var code = document.getElementById('embed-code').innerText;
