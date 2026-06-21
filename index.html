@@ -567,11 +567,111 @@
   </div>
 </nav>
 
+<!-- ===== YoSinTV FIFA World Cup 2026 Header Banner ===== -->
+<style>
+  .yst-wc26{
+    --yst-bg1:#0b1220; --yst-bg2:#0f172a; --yst-bg3:#162033;
+    --yst-green:#22c55e; --yst-green-d:#16a34a;
+    --yst-tg:#229ED9; --yst-tg-d:#1c87bd;
+    --yst-text:#e2e8f0; --yst-muted:#94a3b8;
+    width:100%; box-sizing:border-box; margin:12px 0; padding:18px 16px;
+    background:linear-gradient(145deg,var(--yst-bg1),var(--yst-bg2) 55%,var(--yst-bg3));
+    border:1px solid rgba(255,255,255,.08); border-radius:16px;
+    box-shadow:0 8px 28px rgba(0,0,0,.35);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    text-align:center; position:relative; overflow:hidden;
+  }
+  .yst-wc26::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(120% 80% at 50% -20%,rgba(34,197,94,.16),transparent 60%);
+    pointer-events:none;
+  }
+  .yst-wc26 *{box-sizing:border-box;}
+  .yst-inner{position:relative; max-width:640px; margin:0 auto;}
+
+  .yst-badge{
+    display:inline-flex; align-items:center; gap:7px;
+    padding:5px 12px; margin:0 0 12px; border-radius:999px;
+    background:rgba(34,197,94,.12); border:1px solid rgba(34,197,94,.35);
+    color:#7ef0a8; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  }
+  .yst-dot{width:7px; height:7px; border-radius:50%; background:var(--yst-green);
+    box-shadow:0 0 0 0 rgba(34,197,94,.6); animation:yst-pulse 1.8s infinite;}
+  @keyframes yst-pulse{
+    0%{box-shadow:0 0 0 0 rgba(34,197,94,.55);}
+    70%{box-shadow:0 0 0 8px rgba(34,197,94,0);}
+    100%{box-shadow:0 0 0 0 rgba(34,197,94,0);}
+  }
+
+  .yst-title{
+    margin:0 0 6px; font-size:21px; line-height:1.2; font-weight:800; color:#fff;
+    letter-spacing:-.01em;
+  }
+  .yst-title span{
+    background:linear-gradient(90deg,#22c55e,#4ade80);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .yst-sub{
+    margin:0 auto 16px; max-width:440px; font-size:13.5px; line-height:1.5; color:var(--yst-muted);
+  }
+
+  .yst-btns{
+    display:flex; flex-wrap:wrap; gap:10px; justify-content:center; align-items:stretch;
+  }
+  .yst-btn{
+    flex:1 1 220px; max-width:320px;
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:13px 18px; border-radius:10px;
+    color:#fff; text-decoration:none; font-weight:700; font-size:14.5px;
+    transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .yst-btn:hover{transform:translateY(-2px); filter:brightness(1.05);}
+  .yst-btn:active{transform:translateY(0); filter:brightness(.97);}
+  .yst-apk{
+    background:linear-gradient(180deg,var(--yst-green),var(--yst-green-d));
+    box-shadow:0 5px 16px rgba(34,197,94,.35);
+  }
+  .yst-apk:hover{box-shadow:0 8px 22px rgba(34,197,94,.45);}
+  .yst-tg{
+    background:linear-gradient(180deg,var(--yst-tg),var(--yst-tg-d));
+    box-shadow:0 5px 16px rgba(34,158,217,.32);
+  }
+  .yst-tg:hover{box-shadow:0 8px 22px rgba(34,158,217,.42);}
+  .yst-btn svg{flex:0 0 auto;}
+
+  /* Phones: stack full-width */
+  @media (max-width:520px){
+    .yst-wc26{padding:16px 14px;}
+    .yst-title{font-size:19px;}
+    .yst-sub{font-size:13px;}
+    .yst-btn{flex:1 1 100%; max-width:100%;}
+  }
+</style>
+
+  
 <!-- Top ad (filled by google.js) -->
 <div class="ad-wrap" id="ad-top"></div>
-
 <div class="yst-wrap">
   <main>
+
+<div class="yst-wc26">
+  <div class="yst-inner">
+    <h3 class="yst-title">FIFA <span>World Cup 2026</span></h3>
+    <p class="yst-sub">Download the latest YoSinTV APK and join our Telegram channel for real-time score updates.</p>
+    <div class="yst-btns">
+      <a class="yst-btn yst-apk" href="https://shorturl.at/qDSOS" target="_blank" rel="noopener noreferrer">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+        Download APK
+      </a>
+      <a class="yst-btn yst-tg" href="https://t.me/yosintvlive" target="_blank" rel="noopener noreferrer">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4Z"/></svg>
+        Join Channel
+      </a>
+    </div>
+  </div>
+</div>
+<!-- ===== /YoSinTV Banner ===== -->
     <section class="panel">
       <div class="sh">
         <h2 class="sh-t">All Upcoming Events</h2>
