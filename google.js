@@ -15,8 +15,8 @@
   const SLOT_FIXED = '5912194004';
 
   // ----- Second AdSense account (mid + bottom) -----
-  const ALT_CLIENT = 'ca-pub-7981191925382455';
-  const ALT_SLOT = '3322637685'; // used by mid + bottom
+  const ALT_CLIENT = 'ca-pub-5525538810839147';
+  const ALT_SLOT = '4345862479'; // used by mid + bottom
 
   // Load the AdSense library for a given account (once per account).
   function loadAdsense(client) {
